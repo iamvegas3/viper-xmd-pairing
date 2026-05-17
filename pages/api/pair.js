@@ -46,7 +46,7 @@ export default async function handler(req, res) {
       await new Session({ sessionId, phoneNumber: userNumber, creds: state }).save();
       
       await sock.sendMessage(`${userNumber}@s.whatsapp.net`, {
-        text: `✅ PAIRING SUCCESSFUL!\n\n🔐 SESSION ID:\n${sessionId}\n\nSave this ID for your bot.\n\n📝 Use in .env:\nSESSION_ID=${sessionId}\n\n⚡ Viper XMD | GlenTech`
+        text: `✅ PAIRING SUCCESSFUL!\n\n🔐 SESSION ID:\n${sessionId}\n\nSave this ID for your bot.\n\n⚡ Viper XMD | GlenTech`
       });
       
       if (!res.headersSent) {
