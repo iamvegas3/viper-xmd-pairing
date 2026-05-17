@@ -39,7 +39,7 @@ export default function Home() {
     if (data.qr) setQr(data.qr);
     if (data.pairingCode) setCode(data.pairingCode);
     setSessionId(data.sessionId);
-    setStatus(`⏳ Scan ${method === 'qr' ? 'QR code' : 'enter code'} in WhatsApp...`);
+    setStatus(`⏳ ${method === 'qr' ? 'Scan QR' : 'Enter code'} in WhatsApp...`);
   };
 
   return (
@@ -49,8 +49,8 @@ export default function Home() {
         <p>WhatsApp Session Generator</p>
         
         <div style={{ marginBottom: 20 }}>
-          <button onClick={() => setMethod('code')} style={{ padding: 10, margin: 5, background: method === 'code' ? '#0f0' : '#333', color: '#000', border: 'none' }}>📱 Pairing Code</button>
-          <button onClick={() => setMethod('qr')} style={{ padding: 10, margin: 5, background: method === 'qr' ? '#0f0' : '#333', color: '#000', border: 'none' }}>📷 QR Code</button>
+          <button onClick={() => setMethod('code')} style={{ padding: 10, margin: 5, background: method === 'code' ? '#0f0' : '#333', color: '#000', border: 'none', cursor: 'pointer' }}>📱 Code</button>
+          <button onClick={() => setMethod('qr')} style={{ padding: 10, margin: 5, background: method === 'qr' ? '#0f0' : '#333', color: '#000', border: 'none', cursor: 'pointer' }}>📷 QR</button>
         </div>
         
         {!sessionId ? (
@@ -66,7 +66,7 @@ export default function Home() {
               />
             )}
             <button onClick={generate} disabled={loading} style={{ width: '100%', padding: 10, background: loading ? '#333' : '#0f0', color: '#000', border: 'none', cursor: 'pointer' }}>
-              {loading ? 'GENERATING...' : 'GENERATE SESSION'}
+              {loading ? 'GENERATING...' : 'GENERATE'}
             </button>
           </>
         ) : (
@@ -75,19 +75,8 @@ export default function Home() {
           </div>
         )}
         
-        {code && (
-          <div style={{ marginTop: 20, padding: 20, border: '1px solid #0f0' }}>
-            <p>Pairing Code:</p>
-            <h2 style={{ fontSize: 40 }}>{code}</h2>
-          </div>
-        )}
-        
-        {qr && (
-          <div style={{ marginTop: 20, padding: 20, border: '1px solid #0f0' }}>
-            <p>Scan QR Code:</p>
-            <img src={qr} style={{ width: 200, height: 200 }} />
-          </div>
-        )}
+        {code && (<div style={{ marginTop: 20, padding: 20, border: '1px solid #0f0' }}><p>Code:</p><h2 style={{ fontSize: 40 }}>{code}</h2></div>)}
+        {qr && (<div style={{ marginTop: 20, padding: 20, border: '1px solid #0f0' }}><p>Scan QR:</p><img src={qr} style={{ width: 200, height: 200 }} /></div>)}
       </div>
     </div>
   );
