@@ -289,4 +289,20 @@ export default function Home() {
               <p className="text-xs text-gray-500 mt-1">Advanced WhatsApp Session Generator</p>
             </div>
             <div className="flex gap-4">
-              {[Github, Twitter, Linkedin,
+              {[Github, Twitter, Linkedin, Mail].map((Icon, i) => (
+                <motion.a
+                  key={i}
+                  whileHover={{ scale: 1.1 }}
+                  href="#"
+                  className="text-gray-400 hover:text-neon transition-colors"
+                >
+                  <Icon size={20} />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
